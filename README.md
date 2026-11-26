@@ -55,3 +55,8 @@ On any Linux server with Docker:
 - Stop: docker compose down
 
 WebScout is a static app. No GPU, no secrets. Inbound port 80 must be open.
+
+## Deploy on an AMD GPU (ROCm)
+
+See [deploy/AMD_GPU.md](deploy/AMD_GPU.md). The GPU part is optional. Without it, WebScout runs on CPU.
+
