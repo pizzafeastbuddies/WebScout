@@ -41,3 +41,17 @@ npm run build    # production build
 ## Built with
 
 React, Vite, Tailwind CSS, parse5, Vitest.
+
+## Deploy (Docker, CPU only)
+
+On any Linux server with Docker:
+
+    git clone https://github.com/pizzafeastbuddies/WebScout && cd WebScout
+    docker compose up -d --build
+
+- Open: http://SERVER_IP/  | Health: http://SERVER_IP/healthz
+- Logs: docker compose logs -f
+- Update: git pull && docker compose up -d --build
+- Stop: docker compose down
+
+WebScout is a static app. No GPU, no secrets. Inbound port 80 must be open.
