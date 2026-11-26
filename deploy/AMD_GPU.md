@@ -40,7 +40,7 @@ driver 31.70+), set `VLLM_IMAGE` to the matching tag from the
 4. Get WebScout:
    ```bash
    git clone https://github.com/pizzafeastbuddies/WebScout && cd WebScout
-   git checkout docs/add-readme   # until merged to main
+   git checkout feat/amd-rocm-gpu   # until merged to main
    ```
 5. Optional settings, in a `.env` file next to the compose files (never commit it):
    ```bash

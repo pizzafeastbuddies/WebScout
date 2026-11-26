@@ -1,4 +1,4 @@
-﻿# WebScout
+# WebScout
 
 WebScout answers a question from web pages and shows its proof.
 
@@ -45,4 +45,3 @@ React, Vite, Tailwind CSS, parse5, Vitest.
 ## Deploy on an AMD GPU (ROCm)
 
 See [deploy/AMD_GPU.md](deploy/AMD_GPU.md). The GPU part is optional. Without it, WebScout runs on CPU.
-
