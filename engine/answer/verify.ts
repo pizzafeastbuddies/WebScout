@@ -2,6 +2,7 @@ import type { Candidate } from '../extract/candidate';
 import type { AnswerType, MatchType } from '../types';
 import { normalizeForMatch } from '../util/text';
 import { deriveAnswer, matchesAnswerType } from './answerType';
+import { shapeAnswer } from './shape';
 import type { ScoredCandidate } from './select';
 
 /**
@@ -74,6 +75,8 @@ export function verifyCandidate(
   answerType: AnswerType,
   /** The full grounding text of the page this candidate came from. */
   sourceText: string,
+  /** The user's question, used only to tighten the answer (e.g. a year, not a full date). */
+  question?: string,
 ): VerifiedCandidate | RejectedCandidate {
   const { candidate } = scored;
 
@@ -82,10 +85,14 @@ export function verifyCandidate(
     return { candidate, answerType, reason: `snippet is not locatable in the retrieved source: ${inSource.reason ?? 'unknown'}` };
   }
 
-  const answer = deriveAnswer(candidate.text, answerType);
-  if (answer === null) {
+  const derived = deriveAnswer(candidate.text, answerType);
+  if (derived === null) {
     return { candidate, answerType, reason: `no ${answerType} value appears in this passage` };
   }
+  // Tighten to the asked-for value (drop [3]-style marks, "9 November 1989" -> "1989").
+  // Shaping only removes text, and is undone if the shorter answer is not still in the snippet.
+  const shaped = question ? shapeAnswer(question, answerType, derived) : derived;
+  const answer = shaped !== derived && groundAnswer(shaped, candidate.text).ok ? shaped : derived;
   if (!matchesAnswerType(answer, answerType)) {
     return { candidate, answerType, reason: `the value does not look like a ${answerType}` };
   }

@@ -1,0 +1,14 @@
+{
+  "_note": "ASSUMED from Match 2/3 briefs. The Match 4 brief is not public. Edit this file, not app.py, when the real contract is known.",
+  "outputDir": "/app/output",
+  "outputFile": "{queryId}_output.json",
+  "defaultQueryId": "query",
+  "fields": {
+    "answer": "answer",
+    "citations": "citations",
+    "sources": "sources",
+    "confidence": "confidence"
+  },
+  "engineUrl": "http://127.0.0.1:8765",
+  "requestTimeoutSeconds": 27
+}

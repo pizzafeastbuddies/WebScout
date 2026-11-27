@@ -28,7 +28,7 @@ export interface DirectFetcherOptions {
 }
 
 const DEFAULT_ALLOWED_CONTENT_TYPES = ['text/html', 'application/xhtml+xml', 'text/plain'];
-const DEFAULT_MAX_BYTES = 2_000_000;
+const DEFAULT_MAX_BYTES = 5_000_000;
 
 function failure(
   requestedUrl: string,
@@ -98,10 +98,17 @@ export class DirectFetcher implements Fetcher {
         return failure(url, 'network', `The server responded with HTTP ${response.status}`, response.status, finalUrl, contentType);
       }
 
-      const body = await response.text();
-      const bytes = byteLength(body);
-      if (bytes > this.maxBytes) {
+      let body = await response.text();
+      let bytes = byteLength(body);
+      // A page over the cap is read up to the cap rather than refused: the answer is
+      // usually in the first megabytes, and refusing lost whole Wikipedia articles.
+      // Only a pathologically large response (over 4x the cap) is still rejected.
+      if (bytes > this.maxBytes * 4) {
         return failure(url, 'too_large', `The response was ${bytes} bytes`, response.status, finalUrl, contentType);
+      }
+      if (bytes > this.maxBytes) {
+        body = body.slice(0, this.maxBytes);
+        bytes = byteLength(body);
       }
 
       return {

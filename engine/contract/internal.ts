@@ -7,7 +7,7 @@ import type { AbstainReason, AnswerType, Evidence, SourceReport, TraceEvent } fr
  * The neutral internal contract.
  *
  * This is the frozen boundary between the engine and everything around it: the
- * React UI, the Supabase Edge Function, the fixture tests, and â€” later â€” the Match
+ * React UI, the Supabase Edge Function, the fixture tests, and â€?later â€?the Match
  * 4 harness adapter. Callers hand in a `RetrievalRequest`, they get back a
  * `RetrievalResponse`, and nothing else in the engine's implementation is exposed.
  *
@@ -50,7 +50,7 @@ export const OPTION_BOUNDS = {
 } as const;
 
 /** Engine-wide caps that keep evidence and snippets a sane size in a UI. */
-export const MAX_CANDIDATES_PER_SOURCE = 40;
+export const MAX_CANDIDATES_PER_SOURCE = 400;
 export const MAX_EVIDENCE_ITEMS = 12;
 export const MAX_SNIPPET_CHARS = 320;
 
@@ -81,7 +81,7 @@ export interface EngineDeps {
 }
 
 /**
- * The engine's result. Abstention is a normal, fully-populated outcome â€” not an
+ * The engine's result. Abstention is a normal, fully-populated outcome â€?not an
  * error, and never a bare empty string.
  */
 export interface RetrievalResponse {

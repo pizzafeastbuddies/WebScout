@@ -1,0 +1,734 @@
+{
+  "date": "2026-11-27T14:48:06.607Z",
+  "paceMs": 5000,
+  "total": 36,
+  "passed": 8,
+  "answerablePassed": 6,
+  "answerableTotal": 33,
+  "unanswerablePassed": 2,
+  "unanswerableTotal": 3,
+  "confidentWrong": 18,
+  "medianMs": 2538,
+  "maxMs": 3783,
+  "byCategory": {
+    "name": {
+      "pass": 0,
+      "total": 6
+    },
+    "date": {
+      "pass": 2,
+      "total": 6
+    },
+    "place": {
+      "pass": 0,
+      "total": 5
+    },
+    "measure": {
+      "pass": 2,
+      "total": 6
+    },
+    "table": {
+      "pass": 0,
+      "total": 4
+    },
+    "long_page": {
+      "pass": 1,
+      "total": 4
+    },
+    "wrong_page_trap": {
+      "pass": 1,
+      "total": 2
+    },
+    "unanswerable": {
+      "pass": 2,
+      "total": 3
+    }
+  },
+  "rows": [
+    {
+      "id": "n01",
+      "category": "name",
+      "question": "Who wrote the novel Nineteen Eighty-Four?",
+      "startUrl": null,
+      "accepted": [
+        "George Orwell"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nineteen_Eighty-Four",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2314
+    },
+    {
+      "id": "n02",
+      "category": "name",
+      "question": "Who painted the Mona Lisa?",
+      "startUrl": null,
+      "accepted": [
+        "Leonardo da Vinci"
+      ],
+      "answer": "theory that Leonardo da Vinci painted two versions of the Mona Lisa",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.66,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Two%E2%80%93Mona_Lisa_theory",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 3027
+    },
+    {
+      "id": "n03",
+      "category": "name",
+      "question": "Who created the Python programming language?",
+      "startUrl": null,
+      "accepted": [
+        "Guido van Rossum"
+      ],
+      "answer": "Python was created by Guido van Rossum and first released in 1991.",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Outline_of_the_Python_programming_language",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2178
+    },
+    {
+      "id": "n04",
+      "category": "name",
+      "question": "Who discovered penicillin?",
+      "startUrl": null,
+      "accepted": [
+        "Alexander Fleming"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_Fleming",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2280
+    },
+    {
+      "id": "n05",
+      "category": "name",
+      "question": "Who directed the film Jaws?",
+      "startUrl": null,
+      "accepted": [
+        "Steven Spielberg"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jaws_(film)",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2257
+    },
+    {
+      "id": "n06",
+      "category": "name",
+      "question": "Who composed The Four Seasons?",
+      "startUrl": null,
+      "accepted": [
+        "Antonio Vivaldi"
+      ],
+      "answer": "Under the guidance of Bob Crewe, the Four Seasons followed up \"Sherry\" with several million-selling singles, generally composed by Crewe and Gaudio, including \"Big Girls Don't Cry\" (their second No.",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.58,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Four_Seasons_(band)",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2538
+    },
+    {
+      "id": "d01",
+      "category": "date",
+      "question": "In what year was the Eiffel Tower completed?",
+      "startUrl": null,
+      "accepted": [
+        "1889"
+      ],
+      "answer": "1957",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.66,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2323
+    },
+    {
+      "id": "d02",
+      "category": "date",
+      "question": "In what year did the Berlin Wall fall?",
+      "startUrl": null,
+      "accepted": [
+        "1989"
+      ],
+      "answer": "1989",
+      "pass": true,
+      "unanswerable": false,
+      "confidence": 0.94,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2326
+    },
+    {
+      "id": "d03",
+      "category": "date",
+      "question": "In what year was Python first released?",
+      "startUrl": null,
+      "accepted": [
+        "1991"
+      ],
+      "answer": "1991",
+      "pass": true,
+      "unanswerable": false,
+      "confidence": 0.66,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2505
+    },
+    {
+      "id": "d04",
+      "category": "date",
+      "question": "In what year did the Titanic sink?",
+      "startUrl": null,
+      "accepted": [
+        "1912"
+      ],
+      "answer": "1987",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Wreck_of_the_Titanic",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2498
+    },
+    {
+      "id": "d05",
+      "category": "date",
+      "question": "On what date did Apollo 11 land on the Moon?",
+      "startUrl": null,
+      "accepted": [
+        "20 July 1969",
+        "July 20, 1969",
+        "July 20 1969"
+      ],
+      "answer": "1959",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.58,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Moon_landing",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2260
+    },
+    {
+      "id": "d06",
+      "category": "date",
+      "question": "In what year was the Great Fire of London?",
+      "startUrl": null,
+      "accepted": [
+        "1666"
+      ],
+      "answer": "1908",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.66,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Great_Fire_of_London",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2788
+    },
+    {
+      "id": "p01",
+      "category": "place",
+      "question": "What is the capital of Chile?",
+      "startUrl": null,
+      "accepted": [
+        "Santiago"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Capital_punishment_in_Chile",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2865
+    },
+    {
+      "id": "p02",
+      "category": "place",
+      "question": "What is the capital of Australia?",
+      "startUrl": null,
+      "accepted": [
+        "Canberra"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Australian_Capital_Territory",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2476
+    },
+    {
+      "id": "p03",
+      "category": "place",
+      "question": "In which country is Machu Picchu located?",
+      "startUrl": null,
+      "accepted": [
+        "Peru"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Machu_Picchu",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2881
+    },
+    {
+      "id": "p04",
+      "category": "place",
+      "question": "In which city is the Colosseum located?",
+      "startUrl": null,
+      "accepted": [
+        "Rome"
+      ],
+      "answer": "The Colosseum is an apartment building located at 116th Street and Riverside Drive in Morningside Heights, Manhattan, New York City.",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Colosseum_(Manhattan)",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2466
+    },
+    {
+      "id": "p05",
+      "category": "place",
+      "question": "What is the most populous city in Canada?",
+      "startUrl": null,
+      "accepted": [
+        "Toronto"
+      ],
+      "answer": "Toronto[c] is the most populous city in Canada and the capital city of the Canadian province of Ontario.",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Toronto",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2410
+    },
+    {
+      "id": "m01",
+      "category": "measure",
+      "question": "How tall is the CN Tower in metres?",
+      "startUrl": null,
+      "accepted": [
+        "553.3",
+        "553.3 m",
+        "553.3 metres",
+        "553.3 metres (1,815 ft)"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/CN_Tower_(Edmonton)",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2489
+    },
+    {
+      "id": "m02",
+      "category": "measure",
+      "question": "How tall is Mount Everest in metres?",
+      "startUrl": null,
+      "accepted": [
+        "8848.86",
+        "8,848.86",
+        "8848.86 m",
+        "8,848.86 m",
+        "8849",
+        "8,849",
+        "8849 m"
+      ],
+      "answer": "Mount Everest Altitude 8,849 metres (29,032 ft) 27°59′17″N 86°55′30″E / 27.98806°N 86.92500°E / 27.98806; 86.92500",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.66,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/1996_Mount_Everest_disaster",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 3230
+    },
+    {
+      "id": "m03",
+      "category": "measure",
+      "question": "How many moons does Mars have?",
+      "startUrl": null,
+      "accepted": [
+        "2",
+        "two"
+      ],
+      "answer": "1",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.6,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Deimos_(moon)",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2394
+    },
+    {
+      "id": "m04",
+      "category": "measure",
+      "question": "How many bones are in the adult human body?",
+      "startUrl": null,
+      "accepted": [
+        "206"
+      ],
+      "answer": "206",
+      "pass": true,
+      "unanswerable": false,
+      "confidence": 0.66,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/List_of_bones_of_the_human_skeleton",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2620
+    },
+    {
+      "id": "m05",
+      "category": "measure",
+      "question": "What is the speed of light in vacuum in metres per second?",
+      "startUrl": null,
+      "accepted": [
+        "299792458",
+        "299,792,458",
+        "299792458 m/s",
+        "299,792,458 m/s"
+      ],
+      "answer": "The fastest possible speed at which energy or information can travel, according to special relativity, is the speed of light in vacuum c = 299792458 metres per second (approximately 1079000000 km/h or 671000000 mph).",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Speed",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2737
+    },
+    {
+      "id": "m06",
+      "category": "measure",
+      "question": "What is the atomic number of gold?",
+      "startUrl": null,
+      "accepted": [
+        "79"
+      ],
+      "answer": "79",
+      "pass": true,
+      "unanswerable": false,
+      "confidence": 0.74,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gold",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2374
+    },
+    {
+      "id": "t01",
+      "category": "table",
+      "question": "How tall is the Burj Khalifa in metres?",
+      "startUrl": null,
+      "accepted": [
+        "828",
+        "828 m",
+        "828 metres"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Burj_Azizi",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2465
+    },
+    {
+      "id": "t02",
+      "category": "table",
+      "question": "What is the orbital period of Mars in days?",
+      "startUrl": null,
+      "accepted": [
+        "687",
+        "686.98",
+        "686.980",
+        "686.98 days",
+        "687 days"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mars_3",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 3009
+    },
+    {
+      "id": "t03",
+      "category": "table",
+      "question": "What is the melting point of iron in kelvin?",
+      "startUrl": null,
+      "accepted": [
+        "1811",
+        "1811 K"
+      ],
+      "answer": "↑ Melting point in kelvin (K) (sources)",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.58,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/List_of_chemical_elements",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 3183
+    },
+    {
+      "id": "t04",
+      "category": "table",
+      "question": "What is the standard atomic weight of carbon?",
+      "startUrl": null,
+      "accepted": [
+        "12.011",
+        "12.011 u",
+        "12.011 Da"
+      ],
+      "answer": "",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Commission_on_Isotopic_Abundances_and_Atomic_Weights",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2784
+    },
+    {
+      "id": "l01",
+      "category": "long_page",
+      "question": "What maximum line length does PEP 8 recommend?",
+      "startUrl": "https://peps.python.org/pep-0008/",
+      "accepted": [
+        "79",
+        "79 characters"
+      ],
+      "answer": "Maximum Line Length",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://peps.python.org/pep-0008/",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 1941
+    },
+    {
+      "id": "l02",
+      "category": "long_page",
+      "question": "How many spaces per indentation level does PEP 8 recommend?",
+      "startUrl": "https://peps.python.org/pep-0008/",
+      "accepted": [
+        "4",
+        "4 spaces",
+        "four"
+      ],
+      "answer": "4",
+      "pass": true,
+      "unanswerable": false,
+      "confidence": 0.86,
+      "abstainReason": null,
+      "sourceUrl": "https://peps.python.org/pep-0008/",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 1812
+    },
+    {
+      "id": "l03",
+      "category": "long_page",
+      "question": "Which PEP is The Zen of Python?",
+      "startUrl": "https://peps.python.org/",
+      "accepted": [
+        "20",
+        "PEP 20"
+      ],
+      "answer": "PEP 0 – Index of Python Enhancement Proposals (PEPs) | peps.python.org",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.6,
+      "abstainReason": null,
+      "sourceUrl": "https://peps.python.org/",
+      "pagesFetched": 4,
+      "fetchErrors": [
+        "non_html"
+      ],
+      "ms": 2794
+    },
+    {
+      "id": "l04",
+      "category": "long_page",
+      "question": "What was the code name of the Allied invasion of Normandy in 1944?",
+      "startUrl": "https://en.wikipedia.org/wiki/World_War_II",
+      "accepted": [
+        "Operation Overlord",
+        "Overlord"
+      ],
+      "answer": "Operation Overlord was the codename for the Battle of Normandy, the Allied operation that launched the successful invasion of German-occupied Western Europe during World War II.",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.58,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Normandy",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2888
+    },
+    {
+      "id": "w01",
+      "category": "wrong_page_trap",
+      "question": "In what year was the Sydney Opera House opened?",
+      "startUrl": null,
+      "accepted": [
+        "1973"
+      ],
+      "answer": "1973",
+      "pass": true,
+      "unanswerable": false,
+      "confidence": 0.86,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2725
+    },
+    {
+      "id": "w02",
+      "category": "wrong_page_trap",
+      "question": "How tall is the Eiffel Tower in metres?",
+      "startUrl": null,
+      "accepted": [
+        "330",
+        "330 m",
+        "330 metres",
+        "324",
+        "324 m"
+      ],
+      "answer": "Inspired by the Eiffel Tower in Paris, France, it is 518 feet (158 metres) tall and was once the 125th-tallest freestanding tower in the world.",
+      "pass": false,
+      "unanswerable": false,
+      "confidence": 0.58,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blackpool_Tower",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2779
+    },
+    {
+      "id": "u01",
+      "category": "unanswerable",
+      "question": "What is the phone number of the Python Software Foundation office in Reykjavik?",
+      "startUrl": "https://www.python.org/psf/",
+      "accepted": [
+        ""
+      ],
+      "answer": "",
+      "pass": true,
+      "unanswerable": true,
+      "confidence": 0,
+      "abstainReason": "no_evidence",
+      "sourceUrl": null,
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 2611
+    },
+    {
+      "id": "u02",
+      "category": "unanswerable",
+      "question": "What was the population of the lost city of Atlantis in 2020?",
+      "startUrl": null,
+      "accepted": [
+        ""
+      ],
+      "answer": "After leaving the SGC, Weir heads to Antarctica to lead the research envoy studying the Ancient defense facility that had been discovered in Antarctica, the Ancient city of Atlantis which SG-1 had uncovered during \"Lost City Part 2\".",
+      "pass": false,
+      "unanswerable": true,
+      "confidence": 0.78,
+      "abstainReason": null,
+      "sourceUrl": "https://en.wikipedia.org/wiki/List_of_Stargate_Atlantis_characters",
+      "pagesFetched": 5,
+      "fetchErrors": [],
+      "ms": 3083
+    },
+    {
+      "id": "u03",
+      "category": "unanswerable",
+      "question": "What is the home phone number of the author of Nineteen Eighty-Four?",
+      "startUrl": "https://en.wikipedia.org/wiki/Nineteen_Eighty-Four",
+      "accepted": [
+        ""
+      ],
+      "answer": "",
+      "pass": true,
+      "unanswerable": true,
+      "confidence": 0,
+      "abstainReason": "contradictory_evidence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nineteen_Eighty-Four",
+      "pagesFetched": 4,
+      "fetchErrors": [
+        "not_found"
+      ],
+      "ms": 3783
+    }
+  ]
+}
