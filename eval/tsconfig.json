@@ -1,0 +1,6 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "types": ["node"], "noEmit": true },
+  "include": ["./**/*.ts", "../engine/**/*.ts", "../vite-env.d.ts"],
+  "exclude": ["../engine/__tests__"]
+}

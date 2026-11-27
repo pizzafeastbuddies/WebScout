@@ -19,7 +19,15 @@ export const WIKIMEDIA_ENDPOINT = 'https://en.wikipedia.org/w/api.php';
 export interface WikimediaSearchOptions {
   endpoint?: string;
   timeoutMs?: number;
+  /** Extra attempts after an HTTP 429/503. Default 2. */
+  retries?: number;
+  /** Base wait before a retry. Default 1500 ms, multiplied by the attempt number. */
+  retryDelayMs?: number;
 }
+
+/** Wikipedia's search API answers 429 after roughly nine quick requests. */
+const RETRYABLE_STATUS = new Set([429, 503]);
+const MAX_WAIT_MS = 4_000;
 
 interface MediaWikiSearchItem {
   title?: unknown;
@@ -75,10 +83,14 @@ export class WikimediaSearchProvider implements SearchProvider {
 
   private readonly endpoint: string;
   private readonly timeoutMs: number;
+  private readonly retries: number;
+  private readonly retryDelayMs: number;
 
   constructor(options: WikimediaSearchOptions = {}) {
     this.endpoint = options.endpoint ?? WIKIMEDIA_ENDPOINT;
     this.timeoutMs = options.timeoutMs ?? 8_000;
+    this.retries = Math.max(0, options.retries ?? 2);
+    this.retryDelayMs = Math.max(0, options.retryDelayMs ?? 1_500);
   }
 
   async search(query: string, limit: number): Promise<SearchResult[]> {
@@ -99,20 +111,30 @@ export class WikimediaSearchProvider implements SearchProvider {
     // Anonymous CORS access is granted only when the origin is announced.
     url.searchParams.set('origin', '*');
 
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), this.timeoutMs);
+    for (let attempt = 0; attempt <= this.retries; attempt += 1) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), this.timeoutMs);
+      let waitMs = 0;
 
-    try {
-      const response = await fetch(url.toString(), { signal: controller.signal, credentials: 'omit' });
-      if (!response.ok) {
+      try {
+        const response = await fetch(url.toString(), { signal: controller.signal, credentials: 'omit' });
+        if (response.ok) {
+          const payload: unknown = await response.json();
+          return parseSearchResponse(payload);
+        }
+        if (!RETRYABLE_STATUS.has(response.status) || attempt === this.retries) {
+          return [];
+        }
+        const retryAfter = Number(response.headers.get('retry-after'));
+        waitMs = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1_000 : this.retryDelayMs * (attempt + 1);
+      } catch {
         return [];
+      } finally {
+        clearTimeout(timer);
       }
-      const payload: unknown = await response.json();
-      return parseSearchResponse(payload);
-    } catch {
-      return [];
-    } finally {
-      clearTimeout(timer);
+
+      await new Promise((done) => setTimeout(done, Math.min(waitMs, MAX_WAIT_MS)));
     }
+    return [];
   }
 }

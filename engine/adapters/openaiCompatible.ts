@@ -22,10 +22,12 @@ export interface OpenAICompatibleOptions {
 }
 
 const SYSTEM_PROMPT =
-  'You answer only from the numbered passages. Reply with JSON only: ' +
-  '{"claims":[{"text":"...","evidenceIds":["ev-1"]}]}. ' +
-  'Every claim must cite the ids of the passages that contain it. ' +
-  'If the passages do not answer the question, reply {"claims":[]}.';
+  'You extract one exact value from numbered passages. ' +
+  'Reply with JSON only: {"claims":[{"text":"<value>","evidenceIds":["ev-1"]}]}. ' +
+  'The text must be the shortest exact value (a name, number, date, place or code) copied word for word from one passage. ' +
+  'Never write a sentence, never add units or words that are not in the passage, never use outside knowledge. ' +
+  'For a "what year" question give only the year. Cite the id of the passage you copied it from. ' +
+  'If the passages do not contain the answer, reply {"claims":[]}.';
 
 function trimSlash(url: string): string {
   return url.replace(/\/+$/, '');

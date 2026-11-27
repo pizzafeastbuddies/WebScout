@@ -1,0 +1,36 @@
+{"id":"n01","category":"name","question":"Who wrote the novel Nineteen Eighty-Four?","accepted":["George Orwell"]}
+{"id":"n02","category":"name","question":"Who painted the Mona Lisa?","accepted":["Leonardo da Vinci"]}
+{"id":"n03","category":"name","question":"Who created the Python programming language?","accepted":["Guido van Rossum"]}
+{"id":"n04","category":"name","question":"Who discovered penicillin?","accepted":["Alexander Fleming"]}
+{"id":"n05","category":"name","question":"Who directed the film Jaws?","accepted":["Steven Spielberg"]}
+{"id":"n06","category":"name","question":"Who composed The Four Seasons?","accepted":["Antonio Vivaldi"]}
+{"id":"d01","category":"date","question":"In what year was the Eiffel Tower completed?","accepted":["1889"]}
+{"id":"d02","category":"date","question":"In what year did the Berlin Wall fall?","accepted":["1989"]}
+{"id":"d03","category":"date","question":"In what year was Python first released?","accepted":["1991"]}
+{"id":"d04","category":"date","question":"In what year did the Titanic sink?","accepted":["1912"]}
+{"id":"d05","category":"date","question":"On what date did Apollo 11 land on the Moon?","accepted":["20 July 1969","July 20, 1969","July 20 1969"]}
+{"id":"d06","category":"date","question":"In what year was the Great Fire of London?","accepted":["1666"]}
+{"id":"p01","category":"place","question":"What is the capital of Chile?","accepted":["Santiago"]}
+{"id":"p02","category":"place","question":"What is the capital of Australia?","accepted":["Canberra"]}
+{"id":"p03","category":"place","question":"In which country is Machu Picchu located?","accepted":["Peru"]}
+{"id":"p04","category":"place","question":"In which city is the Colosseum located?","accepted":["Rome"]}
+{"id":"p05","category":"place","question":"What is the most populous city in Canada?","accepted":["Toronto"]}
+{"id":"m01","category":"measure","question":"How tall is the CN Tower in metres?","accepted":["553.3","553.3 m","553.3 metres","553.3 metres (1,815 ft)"]}
+{"id":"m02","category":"measure","question":"How tall is Mount Everest in metres?","accepted":["8848.86","8,848.86","8848.86 m","8,848.86 m","8849","8,849","8849 m"]}
+{"id":"m03","category":"measure","question":"How many moons does Mars have?","accepted":["2","two"]}
+{"id":"m04","category":"measure","question":"How many bones are in the adult human body?","accepted":["206"]}
+{"id":"m05","category":"measure","question":"What is the speed of light in vacuum in metres per second?","accepted":["299792458","299,792,458","299792458 m/s","299,792,458 m/s"]}
+{"id":"m06","category":"measure","question":"What is the atomic number of gold?","accepted":["79"]}
+{"id":"t01","category":"table","question":"How tall is the Burj Khalifa in metres?","accepted":["828","828 m","828 metres"]}
+{"id":"t02","category":"table","question":"What is the orbital period of Mars in days?","accepted":["687","686.98","686.980","686.98 days","687 days"]}
+{"id":"t03","category":"table","question":"What is the melting point of iron in kelvin?","accepted":["1811","1811 K"]}
+{"id":"t04","category":"table","question":"What is the standard atomic weight of carbon?","accepted":["12.011","12.011 u","12.011 Da"]}
+{"id":"l01","category":"long_page","question":"What maximum line length does PEP 8 recommend?","startUrl":"https://peps.python.org/pep-0008/","accepted":["79","79 characters"]}
+{"id":"l02","category":"long_page","question":"How many spaces per indentation level does PEP 8 recommend?","startUrl":"https://peps.python.org/pep-0008/","accepted":["4","4 spaces","four"]}
+{"id":"l03","category":"long_page","question":"Which PEP is The Zen of Python?","startUrl":"https://peps.python.org/","accepted":["20","PEP 20"]}
+{"id":"l04","category":"long_page","question":"What was the code name of the Allied invasion of Normandy in 1944?","startUrl":"https://en.wikipedia.org/wiki/World_War_II","accepted":["Operation Overlord","Overlord"]}
+{"id":"w01","category":"wrong_page_trap","question":"In what year was the Sydney Opera House opened?","accepted":["1973"]}
+{"id":"w02","category":"wrong_page_trap","question":"How tall is the Eiffel Tower in metres?","accepted":["330","330 m","330 metres","324","324 m"]}
+{"id":"u01","category":"unanswerable","question":"What is the phone number of the Python Software Foundation office in Reykjavik?","startUrl":"https://www.python.org/psf/","accepted":[""]}
+{"id":"u02","category":"unanswerable","question":"What was the population of the lost city of Atlantis in 2020?","accepted":[""]}
+{"id":"u03","category":"unanswerable","question":"What is the home phone number of the author of Nineteen Eighty-Four?","startUrl":"https://en.wikipedia.org/wiki/Nineteen_Eighty-Four","accepted":[""]}

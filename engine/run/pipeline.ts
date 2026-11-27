@@ -1,5 +1,6 @@
 import { abstainResponse } from '../answer/abstain';
 import { select } from '../answer/select';
+import { selectWithModel } from '../answer/synthesize';
 import { isRejected, verifyCandidate, type RejectedCandidate, type VerifiedCandidate } from '../answer/verify';
 import { MAX_EVIDENCE_ITEMS, resolveRetrievalRequest, type RetrievalResponse, type RetrievalRunner } from '../contract/internal';
 import { extractLinks } from '../discovery/links';
@@ -28,6 +29,12 @@ import { round } from '../util/text';
  * file drive fixtures in a test, live HTTP behind the Edge Function, and the AMD
  * container.
  */
+
+/** Words that describe the SHAPE of the answer wanted, not the subject: useless in a search query. */
+const SEARCH_NOISE: ReadonlySet<string> = new Set([
+  'year', 'years', 'date', 'many', 'much', 'tall', 'high', 'long', 'old', 'big', 'large', 'number',
+  'name', 'called', 'metres', 'meters', 'kilometres', 'percent', 'default',
+]);
 
 /** How many ranked candidates are put through the (more expensive) verification gate. */
 const SHORTLIST_SIZE = 25;
@@ -169,7 +176,16 @@ export const runRetrieval: RetrievalRunner = async (request, deps) => {
 
     let results: SearchResult[] = [];
     try {
-      results = await provider.search(resolved.question, Math.min(resolved.options.maxPages, DEFAULT_SEARCH_LIMIT));
+      const limit = Math.min(resolved.options.maxPages, DEFAULT_SEARCH_LIMIT);
+      // Search on the question's content words: a whole question ("In what year was the
+      // Eiffel Tower completed?") ranks worse than "eiffel tower completed". Words that
+      // only describe the kind of answer wanted ("year", "tall") are left out.
+      const searchWords = understanding.keywords.filter((word) => !SEARCH_NOISE.has(word));
+      const keywordQuery = searchWords.length >= 2 ? searchWords.join(' ') : resolved.question;
+      results = await provider.search(keywordQuery, limit);
+      if (results.length === 0 && keywordQuery !== resolved.question) {
+        results = await provider.search(resolved.question, limit);
+      }
     } catch {
       // Providers are contractually soft. If one throws anyway, discovery simply
       // yields nothing and the run abstains rather than failing.
@@ -318,7 +334,7 @@ export const runRetrieval: RetrievalRunner = async (request, deps) => {
   const rejected: RejectedCandidate[] = [];
 
   for (const item of shortlist) {
-    const verdict = verifyCandidate(item, understanding.answerType, grounding.get(item.candidate.sourceUrl) ?? '');
+    const verdict = verifyCandidate(item, understanding.answerType, grounding.get(item.candidate.sourceUrl) ?? '', resolved.question);
     if (isRejected(verdict)) {
       rejected.push(verdict);
     } else {
@@ -346,6 +362,34 @@ export const runRetrieval: RetrievalRunner = async (request, deps) => {
 
   if (verified.length === 0) {
     return abstain(understanding.answerType, 'no_evidence', sources);
+  }
+
+  // ---- OPTIONAL MODEL STEP ------------------------------------------------
+  // A model may pick the exact value from the verified passages. Its value must still
+  // occur in the passage and in the page (see selectWithModel), so it cannot add facts.
+  const modelOutcome = await selectWithModel(deps.llm, understanding, verified, (url) => grounding.get(url) ?? '');
+
+  if (modelOutcome.kind === 'declined') {
+    trace.push({ stage: 'verify', status: 'failed', detail: `Model step: ${modelOutcome.reason}` });
+    return abstain(understanding.answerType, 'no_evidence', sources);
+  }
+
+  if (modelOutcome.kind === 'answered') {
+    trace.push({
+      stage: 'verify',
+      status: 'ok',
+      detail: `Model picked the value; it is grounded in ${modelOutcome.evidenceId} and in the page`,
+    });
+    trace.push({ stage: 'format', status: 'ok', detail: 'Answer returned with evidence' });
+    return formatResponse({
+      question: resolved.question,
+      understanding,
+      verified: modelOutcome.ranked,
+      rejected,
+      sources,
+      trace,
+      conflict: false,
+    });
   }
 
   const conflict = detectConflict(verified);

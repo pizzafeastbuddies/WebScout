@@ -1,0 +1,37 @@
+# AMD AI League submission image.
+#
+# The FINAL stage must start from the mandated ROCm base (checked by layer identity).
+# Do NOT squash or flatten this image, and do NOT `pip install` anything without
+# --no-deps: pip can replace the base image's ROCm torch with a CUDA build.
+#
+#   docker build -f Dockerfile.competition -t webscout-competition .
+
+# ---- stage 1: bundle the TypeScript engine into one Node file -----------------
+FROM node:22-bookworm-slim AS build
+WORKDIR /src
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY engine ./engine
+COPY app ./app
+COPY vite-env.d.ts tsconfig.json ./
+RUN npx vite build --config app/vite.server.config.ts
+
+# ---- stage 2: the mandated ROCm base ------------------------------------------
+FROM rocm/pytorch:rocm10.0_ubuntu26.04_py3.14_pytorch_release_2.13.0
+
+# One static binary is enough to run the bundle; nothing is installed with apt or pip.
+COPY --from=build /usr/local/bin/node /usr/local/bin/node
+
+WORKDIR /app
+COPY app/app.py app/contract.json app/start.sh app/model_server.py /app/
+COPY --from=build /src/dist-server/engine-server.mjs /app/dist-server/engine-server.mjs
+
+# Model weights, when added, go in /models (the harness reads this path).
+RUN mkdir -p /app/output /models && chmod +x /app/start.sh
+
+ENV WEBSCOUT_BUNDLE=/app/dist-server/engine-server.mjs \
+    WEBSCOUT_OUTPUT=/app/output \
+    WEBSCOUT_PORT=8765
+
+# The container must keep running: the harness execs app.py into it, question by question.
+CMD ["/app/start.sh"]

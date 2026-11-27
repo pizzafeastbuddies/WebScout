@@ -27,3 +27,4 @@ dist-ssr
 models/
 .env
 
+dist-server
